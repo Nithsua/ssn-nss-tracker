@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nss_tracker/model/user_model.dart';
+import 'package:nss_tracker/services/firebase/firebase.dart';
 import 'package:nss_tracker/views/home_view.dart';
+import 'package:nss_tracker/views/login_view.dart';
 import 'package:provider/provider.dart';
 
 class MainView extends StatelessWidget {
@@ -39,11 +41,14 @@ class MainView extends StatelessWidget {
                     ],
                   ),
                   IconButton(
-                    onPressed: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (_) => UserView()));
+                    onPressed: () async {
+                      await firebaseAuthServices.signOut();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => LoginView()),
+                          (route) => false);
                     },
-                    icon: Icon(Icons.account_circle_outlined),
+                    icon: Icon(Icons.exit_to_app),
                     color: Colors.green,
                   ),
                 ],

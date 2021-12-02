@@ -31,9 +31,12 @@ class LoginView extends StatelessWidget {
                     ?.apply(fontWeightDelta: 1),
               ),
               TextField(
+                decoration: InputDecoration(hintText: "Username"),
                 controller: _emailController,
               ),
               TextField(
+                decoration: InputDecoration(hintText: "Password"),
+                obscureText: true,
                 controller: _passwordController,
               ),
               TextButton(
@@ -50,7 +53,7 @@ class LoginView extends StatelessWidget {
                         builder: (context) => AlertDialog(
                               title: Text("Error while Sign In"),
                               content: Text(
-                                  "Looks like the sign in flow encountered some issue, please try again"),
+                                  "Looks like the signi in flow encountered some issue, please try again"),
                               actions: [
                                 OutlinedButton(
                                     onPressed: () => Navigator.pop(context),

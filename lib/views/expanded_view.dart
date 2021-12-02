@@ -197,10 +197,7 @@ class ExpandedView extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton(
                           onPressed: isOngoing &&
-                                  DateTime.now().isBefore(event.startDateTime
-                                      .add(Duration(minutes: 10))) &&
-                                  DateTime.now().isAfter(event.startDateTime
-                                      .subtract(Duration(minutes: 5)))
+                                  DateTime.now().isBefore(event.endDateTime)
                               ? () {
                                   // launch(event.link);
                                   final newAttendace = Provider.of<UserModel>(
@@ -240,11 +237,7 @@ class ExpandedView extends StatelessWidget {
                           ),
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
-                                DateTime.now().isBefore(event.startDateTime
-                                            .add(Duration(minutes: 10))) &&
-                                        DateTime.now().isAfter(event
-                                            .startDateTime
-                                            .subtract(Duration(minutes: 5)))
+                                DateTime.now().isBefore(event.endDateTime)
                                     ? Colors.lightGreenAccent.shade700
                                     : Colors.grey.shade600),
                             elevation: MaterialStateProperty.all<double>(5.0),
